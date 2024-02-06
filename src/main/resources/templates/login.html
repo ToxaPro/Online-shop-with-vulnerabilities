@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <title>Shop</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/shards.min.css}">
+</head>
+<body>
+<div class="row justify-content-center align-items-center">
+    <div class="col-md-12">
+        <form action="#" method="post" th:action="@{/login}" th:object="${customer}">
+            <div class="row">
+                <div class="col-md-6 mb-3 ml-auto mr-auto">
+                    <input class="form-control" id="username" placeholder="Логин" th:field="*{username}" type="text">
+                    <ul class="list-group">
+                        <li th:each="err : ${#fields.errors('username')}" th:text="${err}" class="alert alert-danger list-group-item" />
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3 ml-auto mr-auto">
+                    <input class="form-control" id="password" placeholder="Пароль" th:field="*{password}" type="password">
+                    <ul class="list-group">
+                        <li th:each="err : ${#fields.errors('password')}" th:text="${err}" class="alert alert-danger list-group-item" />
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3 ml-auto mr-auto">
+                    <input class="form-control" type="submit" value="Войти">
+                </div>
+            </div>
+        </form>
+        <form action="#" method="get" th:action="@{/register}">
+            <div class="row">
+                <div class="col-md-6 mb-3 ml-auto mr-auto">
+                    <input class="form-control" type="submit" value="Зарегистрироваться">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

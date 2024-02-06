@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div class="navbar navbar-fixed-top navbar-dark" th:fragment="header">
+    <div class="container">
+        <div class="navbar-header col-lg-12 col-centered" style="text-align:center">
+            <a th:href="@{/products}">Товары</a>
+            <a sec:authorize="isAuthenticated()" th:href="@{/home}">Мой кабинет</a>
+            <a sec:authorize="isAuthenticated()" th:href="@{/shopping-cart}">Корзина</a>
+            <a sec:authorize="!isAuthenticated()" th:href="@{/login}">Войти</a>
+            <a sec:authorize="!isAuthenticated()" th:href="@{/register}">Регистрация</a>
+        </div>
+    </div>
+</div>

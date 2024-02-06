@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <title>Shop</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/shards.min.css}">
+</head>
+<body>
+<div th:replace="fragments/header :: header">...</div>
+<div class="row justify-content-center align-items-center">
+    Личная информация
+</div>
+<div class="row justify-content-center align-items-center">
+    <div class="col-md-12">
+        <form action="#" method="post" th:action="@{/customer/{username}(username=${username})}" th:object="${customer}">
+            <div class="row">
+                <div class="col-md-6 mb-3 ml-auto mr-auto">
+                    <label for="surname" class="col-sm-2 col-form-label">Фамилия</label>
+                    <input class="form-control" id="surname" placeholder="Фамилия" th:field="*{surname}" type="text">
+                    <ul>
+                        <li th:each="err : ${#fields.errors('surname')}" th:text="${err}" class="alert alert-danger" />
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3 ml-auto mr-auto">
+                    <label for="name" class="col-sm-2 col-form-label">Имя</label>
+                    <input class="form-control" id="name" placeholder="Имя" th:field="*{name}" type="text">
+                    <ul>
+                        <li th:each="err : ${#fields.errors('name')}" th:text="${err}" class="alert alert-danger" />
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3 ml-auto mr-auto">
+                    <label for="secondName" class="col-sm-2 col-form-label">Отчество</label>
+                    <input class="form-control" id="secondName" placeholder="Отчество" th:field="*{secondName}" type="text">
+                    <ul>
+                        <li th:each="err : ${#fields.errors('secondName')}" th:text="${err}" class="alert alert-danger" />
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3 ml-auto mr-auto">
+                    <label for="phone" class="col-sm-2 col-form-label">Мобильный телефон</label>
+                    <input class="form-control" id="phone" placeholder="Мобильный телефон" th:field="*{phone}" type="text">
+                    <ul>
+                        <li th:each="err : ${#fields.errors('phone')}" th:text="${err}" class="alert alert-danger" />
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3 ml-auto mr-auto">
+                    <label for="email" class="col-sm-2 col-form-label">Электронная почта</label>
+                    <input class="form-control" id="email" placeholder="Электронная почта" th:field="*{email}" type="text">
+                    <ul>
+                        <li th:each="err : ${#fields.errors('email')}" th:text="${err}" class="alert alert-danger" />
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3 ml-auto mr-auto">
+                    <label for="address" class="col-sm-2 col-form-label">Адрес</label>
+                    <input class="form-control" id="address" placeholder="Адрес" th:field="*{address}" type="text">
+                    <ul>
+                        <li th:each="err : ${#fields.errors('address')}" th:text="${err}" class="alert alert-danger" />
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3 ml-auto mr-auto">
+                    <input class="form-control" type="submit" value="Обновить">
+                </div>
+            </div>
+            <td>
+        </form>
+    </div>
+    <ul style="list-style: none;">
+        <li><a th:href="@{/orders}">Мои заказы</a></li>
+        <li><a th:href="@{/logout}" th:text="Выйти"></a></li>
+    </ul>
+</div>
+
+<div th:replace="fragments/footer :: footer">...</div>
+</body>
+</html>
