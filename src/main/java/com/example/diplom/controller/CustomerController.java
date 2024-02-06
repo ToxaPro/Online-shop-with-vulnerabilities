@@ -48,9 +48,9 @@ public class CustomerController {
     public String getCustomer(@PathVariable String username, Model model, HttpServletResponse response, @AuthenticationPrincipal UserDetails userDetails) {
         Customer customer = service.findByUsername(username);
         if (customer != null) {
-//            if (!username.equals(userDetails.getUsername())) {
-//                return RedirectionUtils.redirectToErrors(model, NOT_ENOUGH_RIGHTS, response);
-//            }
+            if (!username.equals(userDetails.getUsername())) {
+                return RedirectionUtils.redirectToErrors(model, NOT_ENOUGH_RIGHTS, response);
+            }
             model.addAttribute(CUSTOMER_ATTRIBUTE, mapper.customerToCustomerInfoDto(customer));
             return HOME_PAGE;
         }
@@ -67,12 +67,12 @@ public class CustomerController {
         }
         Customer customer = service.findByUsername(username);
         if (customer != null) {
-//            if (!username.equals(userDetails.getUsername())) {
-//                return RedirectionUtils.redirectToErrors(model, NOT_ENOUGH_RIGHTS, response);
-//            }
+            if (!username.equals(userDetails.getUsername())) {
+                return RedirectionUtils.redirectToErrors(model, NOT_ENOUGH_RIGHTS, response);
+            }
 
-            unsafeUpdate(dto, username);
-            //safeUpdate(dto, username);
+            //unsafeUpdate(dto, username);
+            safeUpdate(dto, username);
 
             return "redirect:/customer/" + username;
         }

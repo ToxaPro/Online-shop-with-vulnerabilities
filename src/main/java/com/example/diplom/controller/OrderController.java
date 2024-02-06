@@ -57,9 +57,9 @@ public class OrderController {
         if (userDetails != null) {
             Optional<Order> order = orderRepository.findById(id);
             if (order.isPresent()) {
-//                if (!userDetails.getUsername().equals(order.get().getCustomer().getUsername())) {
-//                    return RedirectionUtils.redirectToErrors(model, NOT_ENOUGH_RIGHTS, response);
-//                }
+                if (!userDetails.getUsername().equals(order.get().getCustomer().getUsername())) {
+                    return RedirectionUtils.redirectToErrors(model, NOT_ENOUGH_RIGHTS, response);
+                }
                 Set<Position> positions = order.get().getPositions();
                 model.addAttribute(POSITIONS_ATTRIBUTE, positions);
                 model.addAttribute(COST_ATTRIBUTE, positions.stream().mapToDouble(it -> it.getAmount() * it.getProduct().getPrice()).sum());
